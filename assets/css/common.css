@@ -1,0 +1,432 @@
+/* Charulekh Prakashan - Common Styles for All Pages */
+
+/* Color Variables */
+:root {
+  --main-base: #cd853f;
+  --main-dark: #8b0000;
+  --main-light: #ffe2c2;
+  --main-accent: #f5decb;
+  --main-highlight: #fffaf3;
+}
+
+/* General Body */
+body {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  min-height: 100vh;
+  color: var(--main-dark);
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(
+    90deg,
+    var(--main-base) 60%,
+    var(--main-dark) 100%
+  ) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+.navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+}
+.navbar .nav-link {
+  color: var(--main-highlight) !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar .nav-link.active,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover {
+  border-bottom: 3px solid var(--main-highlight);
+}
+
+/* Floating Elements */
+.floating-om,
+.floating-elements {
+  position: fixed;
+  font-size: 3rem;
+  color: rgba(205, 133, 63, 0.1);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--main-base);
+  font-weight: bold;
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  margin: 0.5rem auto 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(45deg, #ff6347, #ffd700);
+  border-radius: 2px;
+}
+
+/* Buttons */
+.btn-main,
+.btn-primary {
+  background: linear-gradient(45deg, #ff6347, #ffd700);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-main:hover,
+.btn-primary:hover {
+  background: linear-gradient(45deg, #ffd700, #ff6347);
+  color: #fff;
+}
+.btn-outline-secondary {
+  border: 2px solid var(--main-base);
+  color: var(--main-base);
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-outline-secondary:hover {
+  background: var(--main-base);
+  color: #fff;
+}
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  background: #ffd700;
+  color: #8b0000;
+}
+
+/* Cards & Forms */
+.card,
+.product-card,
+.course-card,
+.plan-card,
+.archive-item,
+.testimonial-card {
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px 0 rgba(205, 133, 63, 0.07);
+  border: none;
+}
+.form-control,
+.form-select {
+  border-radius: 10px;
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--main-base);
+  box-shadow: 0 0 0 0.2rem var(--main-light);
+}
+
+/* Hero, Header, and Page Header Sections */
+.hero,
+.hero-section,
+.products-header,
+.page-header,
+.blog-header {
+  margin-top: 80px;
+  padding: 4rem 0;
+  text-align: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+.hero h1,
+.hero-title,
+.products-header h1,
+.page-header h1,
+.blog-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.hero p,
+.products-header p,
+.page-header p,
+.blog-header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Product & Course Grids */
+.products-grid,
+.courses-grid,
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.product-card,
+.course-card {
+  background: #fff;
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.product-card:hover,
+.course-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffd700;
+}
+.product-image,
+.course-image {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #fff;
+  position: relative;
+}
+.product-badge,
+.course-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff6347;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.product-badge.bestseller {
+  background: #ffd700;
+  color: #8b0000;
+}
+.product-badge.new {
+  background: #28a745;
+}
+.product-content,
+.course-content {
+  padding: 2rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.product-category,
+.course-category {
+  color: var(--main-base);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.product-title,
+.course-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--main-dark);
+  font-weight: 700;
+}
+.product-description,
+.course-description {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.product-price,
+.course-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.current-price,
+.course-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--main-base);
+}
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+.discount {
+  background: #ff6347;
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.product-actions,
+.course-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+/* Testimonials */
+.testimonials {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 4rem 0;
+  color: #fff;
+  margin-top: 4rem;
+}
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.testimonial-rating {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.testimonial-author {
+  font-weight: 600;
+  color: #ffd700;
+}
+
+/* Newsletter */
+.newsletter {
+  background: var(--main-base);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 0;
+}
+.newsletter .form-control {
+  border-radius: 2rem;
+  border: 1px solid var(--main-base);
+  background: var(--main-accent);
+  color: var(--main-dark);
+}
+.newsletter .form-control:focus {
+  border-color: var(--main-dark);
+  box-shadow: 0 0 0 0.2rem var(--main-light);
+}
+.newsletter .btn-main {
+  background: #fff;
+  color: var(--main-base);
+  border: none;
+}
+.newsletter .btn-main:hover {
+  background: var(--main-dark);
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  background: var(--main-dark);
+  color: var(--main-accent);
+  padding: 3rem 0 1rem;
+}
+.footer-section h3,
+.footer-section h5 {
+  color: var(--main-base);
+  font-weight: bold;
+}
+.footer-section a {
+  color: var(--main-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-section a:hover {
+  color: var(--main-base);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #b07b3f;
+  color: var(--main-light);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hero h1,
+  .hero-title,
+  .products-header h1,
+  .page-header h1,
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+  .product-image,
+  .course-image {
+    height: 120px;
+    font-size: 2rem;
+  }
+  .cover-3d,
+  .current-cover {
+    width: 180px;
+    height: 250px;
+  }
+}
+@media (max-width: 768px) {
+  .hero,
+  .hero-section,
+  .products-header,
+  .page-header,
+  .blog-header {
+    padding: 2rem 0;
+  }
+  .products-section,
+  .courses-section,
+  .testimonials,
+  .current-issue,
+  .archives-section,
+  .subscription-section {
+    padding: 2rem 0;
+  }
+  .products-grid,
+  .courses-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-actions,
+  .course-actions {
+    flex-direction: column;
+  }
+  .filter-tabs {
+    flex-direction: column;
+  }
+}

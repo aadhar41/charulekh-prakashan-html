@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Insights Blog - Charulekh Prakashan</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-base: #CD853F;
+            --main-dark: #7a4a1f;
+            --main-light: #ffe2c2;
+            --main-accent: #f5decb;
+            --main-highlight: #fffaf3;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            color: var(--main-dark);
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, var(--main-base) 60%, var(--main-dark) 100%) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar .navbar-brand::before {
+            /* content: "🕉️"; */
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .navbar .nav-link {
+            color: var(--main-highlight) !important;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            /* border-radius: 0.5rem; */
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-link.active,
+        .navbar .nav-link:focus,
+        .navbar .nav-link:hover {
+            border-bottom: 3px solid var(--main-highlight);
+        }
+
+        .blog-header {
+            margin-top: 80px;
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23DAA520" width="1200" height="400"/><circle fill="%23FF6347" cx="200" cy="100" r="30" opacity="0.3"/><circle fill="%23FFD700" cx="1000" cy="300" r="50" opacity="0.2"/></svg>');
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-om {
+            position: fixed;
+            font-size: 3rem;
+            color: rgba(205, 133, 63, 0.10);
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-om:nth-child(1) {
+            top: 15%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-om:nth-child(2) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 3s;
+        }
+
+        .floating-om:nth-child(3) {
+            bottom: 25%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+
+        /* Blog Cards */
+        .blog-post {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #FF6347, #FFD700);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .post-content {
+            padding: 2rem;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .post-category {
+            background: linear-gradient(45deg, #FF6347, #FFD700);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .post-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--main-dark);
+            line-height: 1.3;
+        }
+
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FF6347;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--main-base);
+            transform: translateX(5px);
+        }
+
+        /* Sidebar */
+        .sidebar .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar .card-title {
+            color: var(--main-base);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .recent-posts .list-group-item {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            padding: 0.8rem 1rem;
+        }
+
+        .recent-posts .list-group-item:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .recent-post-icon {
+            font-size: 2rem;
+            min-width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 1rem;
+        }
+
+        .categories-list .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .categories-list .list-group-item:hover {
+            background: linear-gradient(45deg, #FF6347, #FFD700);
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .category-count {
+            background: #8B0000;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .newsletter-widget {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-widget .form-control {
+            border-radius: 25px;
+            border: none;
+        }
+
+        .newsletter-widget .btn {
+            border-radius: 25px;
+            background: #FFD700;
+            color: #8B0000;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .newsletter-widget .btn:hover {
+            background: #FF6347;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .page-link {
+            color: #8B0000;
+            border-radius: 8px !important;
+            border: 2px solid #8B0000;
+            margin: 0 0.15rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .page-link.active,
+        .page-link:focus,
+        .page-link:hover {
+            background: #8B0000;
+            color: #fff;
+            border-color: #8B0000;
+        }
+
+        @media (max-width: 991px) {
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            .post-image {
+                height: 140px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-om">🕉️</div>
+    <div class="floating-om">📿</div>
+    <div class="floating-om">🔔</div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/logo.png" alt="Charulekh Prakashan Logo" style="height:40px; width:auto;">
+                <span class="fw-bold" style="font-size:1.5rem;">Charulekh Prakashan</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="books-catalog-page.html">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="magazine.html">Magazine</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>Spiritual Insights & Wisdom</h1>
+            <p>Explore ancient knowledge, astrology insights, spiritual practices, and divine guidance for modern life
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- Blog Posts -->
+            <div class="col-lg-8">
+                <article class="blog-post">
+                    <div class="post-image">🌟</div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Astrology</span>
+                            <span class="ms-3">📅 June 8, 2025</span>
+                        </div>
+                        <h2 class="post-title">Understanding Your Nakshatra: The Celestial Guide to Your Destiny</h2>
+                        <p class="post-excerpt">Discover how the 27 Nakshatras influence your personality, career,
+                            relationships, and spiritual journey. Learn to harness the cosmic energies that shape your
+                            life path through ancient Vedic wisdom.</p>
+                        <a href="#" class="read-more">Read Full Article →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="post-image">🔮</div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Numerology</span>
+                            <span class="ms-3">📅 June 6, 2025</span>
+                        </div>
+                        <h2 class="post-title">The Power of Number 9: Spiritual Completion and Divine Wisdom</h2>
+                        <p class="post-excerpt">Explore the mystical significance of number 9 in numerology, its
+                            connection to spiritual enlightenment, and how it influences those born under its vibration.
+                        </p>
+                        <a href="#" class="read-more">Read Full Article →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="post-image">🕉️</div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Mantras</span>
+                            <span class="ms-3">📅 June 4, 2025</span>
+                        </div>
+                        <h2 class="post-title">108 Names of Lord Ganesha: Removing Obstacles Through Sacred Chanting
+                        </h2>
+                        <p class="post-excerpt">Learn the profound meanings behind the 108 names of Lord Ganesha and how
+                            regular chanting can remove obstacles from your spiritual and material journey.</p>
+                        <a href="#" class="read-more">Read Full Article →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="post-image">💎</div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Gemstones</span>
+                            <span class="ms-3">📅 June 2, 2025</span>
+                        </div>
+                        <h2 class="post-title">Ruby: The King of Gemstones and Its Astrological Benefits</h2>
+                        <p class="post-excerpt">Discover the astrological significance of Ruby, how it enhances Sun's
+                            energy, boosts confidence, and attracts wealth and success when worn correctly.</p>
+                        <a href="#" class="read-more">Read Full Article →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="post-image">🔥</div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Havan</span>
+                            <span class="ms-3">📅 May 30, 2025</span>
+                        </div>
+                        <h2 class="post-title">Maha Mrityunjaya Havan: Conquering Death Through Sacred Fire</h2>
+                        <p class="post-excerpt">Step-by-step guide to performing Maha Mrityunjaya Havan at home, its
+                            benefits for health and longevity, and the proper mantras to chant during the ceremony.</p>
+                        <a href="#" class="read-more">Read Full Article →</a>
+                    </div>
+                </article>
+                <!-- Pagination -->
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">← Previous</a></li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next →</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Sidebar -->
+            <aside class="col-lg-4 sidebar">
+                <!-- Recent Posts Widget -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Recent Insights</h3>
+                        <ul class="recent-posts list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="recent-post-icon">🌙</span>
+                                <div>
+                                    <div class="fw-bold">Moon Signs and Emotional Healing</div>
+                                    <div class="small text-muted">June 5, 2025</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="recent-post-icon">⚡</span>
+                                <div>
+                                    <div class="fw-bold">Vastu Tips for Positive Energy</div>
+                                    <div class="small text-muted">June 3, 2025</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="recent-post-icon">🌿</span>
+                                <div>
+                                    <div class="fw-bold">Ayurvedic Remedies for Modern Stress</div>
+                                    <div class="small text-muted">June 1, 2025</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="recent-post-icon">🎭</span>
+                                <div>
+                                    <div class="fw-bold">Past Life Karma and Present Challenges</div>
+                                    <div class="small text-muted">May 28, 2025</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Categories Widget -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Sacred Categories</h3>
+                        <ul class="categories-list list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🔮 Astrology</span>
+                                <span class="category-count">24</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🔢 Numerology</span>
+                                <span class="category-count">18</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🕉️ Mantras & Chants</span>
+                                <span class="category-count">15</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>💎 Gemstones</span>
+                                <span class="category-count">12</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🔥 Havan & Rituals</span>
+                                <span class="category-count">10</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🏠 Vastu Shastra</span>
+                                <span class="category-count">8</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>🌿 Spiritual Healing</span>
+                                <span class="category-count">14</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Newsletter Widget -->
+                <div class="card newsletter-widget">
+                    <div class="card-body">
+                        <h3 class="card-title">Daily Divine Insights</h3>
+                        <p>Receive daily horoscopes, spiritual tips, and exclusive content directly in your inbox.</p>
+                        <form class="newsletter-form">
+                            <input type="email" class="form-control mb-2" placeholder="Your email address" required>
+                            <button type="submit" class="btn w-100">Subscribe Now</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Quick Links Widget -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Spiritual Resources</h3>
+                        <ul class="categories-list list-group list-group-flush">
+                            <li class="list-group-item"><span>📚 Free E-Books</span></li>
+                            <li class="list-group-item"><span>🎧 Meditation Audio</span></li>
+                            <li class="list-group-item"><span>📅 Auspicious Dates</span></li>
+                            <li class="list-group-item"><span>🎓 Online Courses</span></li>
+                            <li class="list-group-item"><span>💬 Ask Expert</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Newsletter form handling
+        document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`🙏 Thank you for subscribing!\nYou'll receive daily spiritual insights at: ${email}`);
+            this.reset();
+        });
+        // Pagination effects
+        document.querySelectorAll('.page-link').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.page-link').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charulekh Prakashan - Digital Spiritual Platform</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-base: #CD853F;
+            --main-dark: #7a4a1f;
+            --main-light: #ffe2c2;
+            --main-accent: #f5decb;
+            --main-highlight: #fffaf3;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--main-highlight) 0%, var(--main-accent) 100%);
+            min-height: 100vh;
+            color: var(--main-dark);
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, var(--main-base) 60%, var(--main-dark) 100%) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar .navbar-brand::before {
+            content: "🕉️";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .navbar .nav-link {
+            color: var(--main-highlight) !important;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            /* border-radius: 0.5rem; */
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-link.active,
+        .navbar .nav-link:focus,
+        .navbar .nav-link:hover {
+            border-bottom: 3px solid var(--main-highlight);
+        }
+
+        .floating-om {
+            position: fixed;
+            font-size: 4rem;
+            color: var(--main-base);
+            opacity: 0.08;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-om:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-om:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-om:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(205, 133, 63, 0.85), rgba(122, 74, 31, 0.85)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ffe2c2" width="1200" height="600"/><circle fill="%23f5decb" cx="300" cy="150" r="50" opacity="0.3"/><circle fill="%23fffaf3" cx="900" cy="450" r="70" opacity="0.2"/></svg>');
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-main {
+            background: var(--main-base);
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px 0 rgba(205, 133, 63, 0.10);
+        }
+
+        .btn-main:hover,
+        .btn-main:focus {
+            background: var(--main-dark);
+            color: #fff;
+        }
+
+        .btn-outline-main {
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 2rem;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-outline-main:hover,
+        .btn-outline-main:focus {
+            background: #fff;
+            color: var(--main-base);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--main-base);
+            font-weight: bold;
+            position: relative;
+        }
+
+        .features .card {
+            border: none;
+            border-radius: 1.2rem;
+            background: var(--main-accent);
+            box-shadow: 0 2px 12px 0 rgba(205, 133, 63, 0.07);
+            transition: transform 0.2s;
+        }
+
+        .features .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(205, 133, 63, 0.13);
+        }
+
+        .features .card .card-title {
+            color: var(--main-base);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .features .card .card-text {
+            color: var(--main-dark);
+        }
+
+        .features .card .display-4 {
+            font-size: 2.5rem;
+        }
+
+        .categories {
+            background: linear-gradient(135deg, var(--main-light) 0%, var(--main-accent) 100%);
+            color: var(--main-dark);
+        }
+
+        .categories .card {
+            background: var(--main-light);
+            border: 1px solid var(--main-base);
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .categories .card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(205, 133, 63, 0.13);
+        }
+
+        .categories .card-title {
+            color: var(--main-base);
+            font-weight: 600;
+        }
+
+        .newsletter {
+            background: var(--main-base);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .newsletter .form-control {
+            border-radius: 2rem;
+            border: 1px solid var(--main-base);
+            background: var(--main-accent);
+            color: var(--main-dark);
+        }
+
+        .newsletter .form-control:focus {
+            border-color: var(--main-dark);
+            box-shadow: 0 0 0 0.2rem var(--main-light);
+        }
+
+        .newsletter .btn-main {
+            background: #fff;
+            color: var(--main-base);
+            border: none;
+        }
+
+        .newsletter .btn-main:hover {
+            background: var(--main-dark);
+            color: #fff;
+        }
+
+        footer {
+            background: var(--main-dark);
+            color: var(--main-accent);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-section h5 {
+            color: var(--main-base);
+            font-weight: bold;
+        }
+
+        .footer-section a {
+            color: var(--main-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--main-base);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #b07b3f;
+            color: var(--main-light);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-om">🕉️</div>
+    <div class="floating-om">📿</div>
+    <div class="floating-om">🔔</div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Charulekh Prakashan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#books">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#magazine">Magazine</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Digital Spiritual Enlightenment</h1>
+            <p>Discover ancient wisdom through modern technology. Access spiritual books, astrology guides, devotional
+                products, and sacred knowledge from the comfort of your home.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#books" class="btn btn-main btn-lg px-4">Explore Books</a>
+                <a href="#courses" class="btn btn-outline-main btn-lg px-4">Start Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-5" id="features">
+        <div class="container">
+            <h2 class="section-title">Our Sacred Offerings</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">📚</div>
+                        <h5 class="card-title">Spiritual Literature</h5>
+                        <p class="card-text">Extensive collection of astrology, numerology, tantra books, and devotional
+                            texts in simple, easy-to-understand language.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">🎧</div>
+                        <h5 class="card-title">Audio Guidance</h5>
+                        <p class="card-text">Havan audio CDs, mantra collections, and guided meditation sessions for
+                            immersive spiritual experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">💎</div>
+                        <h5 class="card-title">Sacred Products</h5>
+                        <p class="card-text">Natural gemstones, pure agarbatti, hawan samagri, and other devotional
+                            items for your spiritual practices.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">📖</div>
+                        <h5 class="card-title">Digital Magazine</h5>
+                        <p class="card-text">Subscribe to Pratyabhigyaan Magazine for monthly spiritual insights,
+                            horoscopes, and devotional content.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">🎓</div>
+                        <h5 class="card-title">Online Courses</h5>
+                        <p class="card-text">Learn astrology, numerology, and spiritual practices through comprehensive
+                            online courses with certification.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="display-4 mb-3">🌟</div>
+                        <h5 class="card-title">Personal Guidance</h5>
+                        <p class="card-text">Get personalized horoscope readings, gemstone recommendations, and
+                            spiritual counseling from experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories py-5" id="categories">
+        <div class="container">
+            <h2 class="section-title">Sacred Categories</h2>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">🔮</div>
+                        <h5 class="card-title">Astrology Books</h5>
+                        <p class="card-text">Comprehensive guides on Vedic astrology</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">🔢</div>
+                        <h5 class="card-title">Numerology</h5>
+                        <p class="card-text">Unlock the power of numbers</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">🕉️</div>
+                        <h5 class="card-title">Tantra & Mantra</h5>
+                        <p class="card-text">Sacred practices and chants</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">🔥</div>
+                        <h5 class="card-title">Havan Guides</h5>
+                        <p class="card-text">Fire ceremony instructions</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">💎</div>
+                        <h5 class="card-title">Gemstones</h5>
+                        <p class="card-text">Natural healing crystals</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 p-4">
+                        <div class="display-4 mb-2">🌿</div>
+                        <h5 class="card-title">Incense & Dhoop</h5>
+                        <p class="card-text">Pure aromatic products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="fw-bold">Stay Connected with Divine Wisdom</h2>
+            <p>Subscribe to receive daily horoscopes, spiritual insights, and exclusive offers</p>
+            <form class="row g-2 justify-content-center newsletter-form">
+                <div class="col-auto">
+                    <input type="email" class="form-control form-control-lg" placeholder="Enter your email address"
+                        required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-main btn-lg px-4">Subscribe Now</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 footer-section">
+                    <h5>Charulekh Prakashan</h5>
+                    <p>Established in 1990, we are your trusted source for spiritual wisdom, devotional products, and
+                        sacred knowledge. Based in Jaipur, Rajasthan.</p>
+                </div>
+                <div class="col-md-3 footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#books">Spiritual Books</a></li>
+                        <li><a href="#courses">Online Courses</a></li>
+                        <li><a href="#magazine">Magazine Subscription</a></li>
+                        <li><a href="#products">Devotional Products</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-section">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Astrology</a></li>
+                        <li><a href="#">Numerology</a></li>
+                        <li><a href="#">Tantra Books</a></li>
+                        <li><a href="#">Gemstones</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-section">
+                    <h5>Contact Info</h5>
+                    <p>📍 Jaipur, Rajasthan, India</p>
+                    <p>📞 Contact: Available on Request</p>
+                    <p>✉️ info@charulekhprakashan.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Charulekh Prakashan. All rights reserved. | Established 1990</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form handling
+        document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with email: ${email}\nYou will receive spiritual insights daily!`);
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
